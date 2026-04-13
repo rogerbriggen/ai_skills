@@ -8,12 +8,9 @@ Check out a GitLab merge request branch locally for review.
 
 1. Read the MR IID from `$ARGUMENTS`.
 
-2. Check whether `glab` is available:
-   ```bash
-   which glab
-   ```
-   - **If available**, use Option A (GitLab CLI — preferred).
-   - **Otherwise**, use Option B (REST API + git).
+2. Determine which method to use:
+   - If `GITLAB_TOKEN` environment variable is **not** set → use **Option A: GitLab CLI** (preferred).
+   - If `GITLAB_TOKEN` environment variable **is** set → use **Option B: REST API + git**.
 
 ---
 
@@ -63,7 +60,7 @@ This fetches the MR's source branch and checks it out locally. Skip to step 6.
    - Source branch name
    - Latest commit SHA (`sha`)
 
-## Example curl command (for reference)
+## Example curl command (for reference, Option B)
 
 ```bash
 PROJECT_PATH=$(git remote get-url origin | sed 's|.*gitlab[^/]*/||; s|\.git$||' | sed 's|/|%2F|g')
