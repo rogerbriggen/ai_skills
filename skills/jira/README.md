@@ -4,15 +4,15 @@ Claude Code and GitHub Copilot skills for interacting with Jira.
 
 These skills automatically choose the best available access method:
 
-| Condition                        | Method used                                            |
-|----------------------------------|--------------------------------------------------------|
-| `JIRA_API_TOKEN` is set          | Jira Cloud REST API v3                                 |
+| Condition                        | Method used                                             |
+| -------------------------------- | ------------------------------------------------------- |
+| `JIRA_API_TOKEN` is set          | Jira Cloud REST API v3                                  |
 | `JIRA_API_TOKEN` is **not** set  | Official Atlassian CLI (`acli`) with stored credentials |
 
 ## Available Skills
 
 | Skill                                        | Command                                       | Description                            |
-|----------------------------------------------|-----------------------------------------------|----------------------------------------|
+| -------------------------------------------- | --------------------------------------------- | -------------------------------------- |
 | [jira-read](./jira-read.md)                  | `/jira-read PROJECT-123`                      | Read a Jira issue                      |
 | [jira-update-state](./jira-update-state.md)  | `/jira-update-state PROJECT-123 In Progress`  | Transition a Jira issue to a new state |
 
@@ -83,10 +83,10 @@ With either option, the skills are then available as `/jira-read` and `/jira-upd
 
 ## Troubleshooting
 
-| Problem | Solution |
-| ------- | -------- |
-| `401 Unauthorized` (API) | Check `JIRA_EMAIL` and `JIRA_API_TOKEN` |
-| `404 Not Found` (API) | Verify `JIRA_BASE_URL` and the issue key |
-| `acli: command not found` | Run `npm install -g @atlassian/acli` |
-| `acli` auth error | Run `acli configure` to re-authenticate |
-| Invalid state | Run `/jira-read PROJECT-123`; check valid transitions in Jira UI |
+| Problem                   | Solution                                                         |
+| ------------------------- | ---------------------------------------------------------------- |
+| `401 Unauthorized` (API)  | Check `JIRA_EMAIL` and `JIRA_API_TOKEN`                          |
+| `404 Not Found` (API)     | Verify `JIRA_BASE_URL` and the issue key                         |
+| `acli: command not found` | Run `npm install -g @atlassian/acli`                             |
+| `acli` auth error         | Run `acli configure` to re-authenticate                          |
+| Invalid state             | Run `/jira-read PROJECT-123`; check valid transitions in Jira UI |

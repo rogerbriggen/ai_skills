@@ -4,23 +4,23 @@ Claude Code and GitHub Copilot skills for interacting with a self-hosted GitLab 
 
 ## Available Skills
 
-| Skill | Command | Description |
-|-------|---------|-------------|
-| [gitlab-mr-create](./gitlab-mr-create.md) | `/gitlab-mr-create --source feature/x --target main --title "My MR"` | Create a new merge request |
-| [gitlab-mr-diff](./gitlab-mr-diff.md) | `/gitlab-mr-diff 42` | Show the diff of a merge request for review |
-| [gitlab-mr-checkout](./gitlab-mr-checkout.md) | `/gitlab-mr-checkout 42` | Check out a merge request branch locally |
-| [gitlab-mr-assign-reviewer](./gitlab-mr-assign-reviewer.md) | `/gitlab-mr-assign-reviewer 42` | Assign yourself as a reviewer on a merge request |
-| [gitlab-mr-line-note](./gitlab-mr-line-note.md) | `/gitlab-mr-line-note 42 src/main.go 15 "Comment"` | Create an inline review note on a specific line |
-| [gitlab-mr-summary](./gitlab-mr-summary.md) | `/gitlab-mr-summary 42` | Generate an AI summary and post it as a general discussion note |
+| Skill                                                       | Command                                                              | Description                                                     |
+| ----------------------------------------------------------- | -------------------------------------------------------------------- | --------------------------------------------------------------- |
+| [gitlab-mr-create](./gitlab-mr-create.md)                   | `/gitlab-mr-create --source feature/x --target main --title "My MR"` | Create a new merge request                                      |
+| [gitlab-mr-diff](./gitlab-mr-diff.md)                       | `/gitlab-mr-diff 42`                                                 | Show the diff of a merge request for review                     |
+| [gitlab-mr-checkout](./gitlab-mr-checkout.md)               | `/gitlab-mr-checkout 42`                                             | Check out a merge request branch locally                        |
+| [gitlab-mr-assign-reviewer](./gitlab-mr-assign-reviewer.md) | `/gitlab-mr-assign-reviewer 42`                                      | Assign yourself as a reviewer on a merge request                |
+| [gitlab-mr-line-note](./gitlab-mr-line-note.md)             | `/gitlab-mr-line-note 42 src/main.go 15 "Comment"`                   | Create an inline review note on a specific line                 |
+| [gitlab-mr-summary](./gitlab-mr-summary.md)                 | `/gitlab-mr-summary 42`                                              | Generate an AI summary and post it as a general discussion note |
 
 ## Tool Selection
 
 Each skill automatically selects which tool to use based on the `GITLAB_TOKEN` environment variable:
 
-| Condition | Tool Used | Notes |
-|-----------|-----------|-------|
+| Condition                     | Tool Used               | Notes                                                               |
+| ----------------------------- | ----------------------- | ------------------------------------------------------------------- |
 | `GITLAB_TOKEN` is **not set** | **GitLab CLI (`glab`)** | Authenticate once with `glab auth login`; no plaintext token in env |
-| `GITLAB_TOKEN` **is set** | **REST API via `curl`** | Requires `GITLAB_HOST` and `GITLAB_TOKEN` in environment |
+| `GITLAB_TOKEN` **is set**     | **REST API via `curl`** | Requires `GITLAB_HOST` and `GITLAB_TOKEN` in environment            |
 
 > **Security tip:** Using `glab` avoids storing a plaintext personal access token in your environment — `glab` manages credentials in its own secure config store.
 
@@ -123,12 +123,12 @@ When using `glab`, the project path is resolved automatically via the `:fullpath
 
 ## Troubleshooting
 
-| Problem | Solution |
-|---------|----------|
-| `401 Unauthorized` | Check that `GITLAB_TOKEN` is correct and has the `api` scope |
-| `404 Not Found` | Verify `GITLAB_HOST` and that you are inside the correct git repository |
-| `403 Forbidden` | Your token may lack the required scope; recreate it with `api` scope |
-| Inline note fails | The line may not be part of the diff; use `/gitlab-mr-summary` for a general note instead |
-| `glab` not found | Install `glab` (Option A) or set `GITLAB_TOKEN` to use the REST API (Option B) |
-| `glab` auth error | Run `glab auth login --hostname <your-gitlab-host>` to authenticate |
-| Wrong tool selected | If `GITLAB_TOKEN` is set, curl is used; unset it to switch to `glab` |
+| Problem             | Solution                                                                                  |
+| ------------------- | ----------------------------------------------------------------------------------------- |
+| `401 Unauthorized`  | Check that `GITLAB_TOKEN` is correct and has the `api` scope                              |
+| `404 Not Found`     | Verify `GITLAB_HOST` and that you are inside the correct git repository                   |
+| `403 Forbidden`     | Your token may lack the required scope; recreate it with `api` scope                      |
+| Inline note fails   | The line may not be part of the diff; use `/gitlab-mr-summary` for a general note instead |
+| `glab` not found    | Install `glab` (Option A) or set `GITLAB_TOKEN` to use the REST API (Option B)            |
+| `glab` auth error   | Run `glab auth login --hostname <your-gitlab-host>` to authenticate                       |
+| Wrong tool selected | If `GITLAB_TOKEN` is set, curl is used; unset it to switch to `glab`                      |
