@@ -50,13 +50,26 @@ You will be prompted for your Atlassian site URL, account email, and an API toke
 
 ## Install the Skills
 
-**Claude Code** — copy the `.md` files into your project's `.claude/commands/` directory:
+**Claude Code** — install the skills using either of these options:
+
+**Option A:** copy the `.md` files into your project's `.claude/commands/` directory:
 
 ```bash
 cp skills/jira/*.md /path/to/your/project/.claude/commands/
 ```
 
-They are then available as `/jira-read` and `/jira-update-state`.
+**Option B:** reference the skill files from `.claude/settings.json`:
+
+```json
+{
+  "commands": {
+    "jira-read": "skills/jira/jira-read.md",
+    "jira-update-state": "skills/jira/jira-update-state.md"
+  }
+}
+```
+
+With either option, the skills are then available as `/jira-read` and `/jira-update-state`.
 
 **GitHub Copilot** — reference the skill files in your Copilot chat session or add them to your workspace context.
 
