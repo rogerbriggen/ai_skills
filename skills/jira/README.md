@@ -4,10 +4,10 @@ Claude Code and GitHub Copilot skills for interacting with Jira.
 
 These skills automatically choose the best available access method:
 
-| Condition                        | Method used                      |
-|----------------------------------|----------------------------------|
-| `JIRA_API_TOKEN` is set          | Jira Cloud REST API v3           |
-| `JIRA_API_TOKEN` is **not** set  | Official Atlassian CLI (`acli`)  |
+| Condition                        | Method used                                            |
+|----------------------------------|--------------------------------------------------------|
+| `JIRA_API_TOKEN` is set          | Jira Cloud REST API v3                                 |
+| `JIRA_API_TOKEN` is **not** set  | Official Atlassian CLI (`acli`) with stored credentials |
 
 ## Available Skills
 
@@ -32,7 +32,7 @@ Generate an API token at <https://id.atlassian.com/manage-profile/security/api-t
 
 ### Option 2 — Official Atlassian CLI (`acli`)
 
-Used automatically when `JIRA_API_TOKEN` is **not** set.
+Used automatically when `JIRA_API_TOKEN` is **not** set in your environment. The `acli` path uses credentials saved by `acli configure`, so you do not need to export `JIRA_API_TOKEN` when using `acli`.
 
 #### Install
 
@@ -46,7 +46,7 @@ npm install -g @atlassian/acli
 acli configure
 ```
 
-You will be prompted for your Atlassian site URL, account email, and an API token.
+You will be prompted for your Atlassian site URL, account email, and an API token. `acli` stores these credentials in its own config for future use.
 
 ## Install the Skills
 
