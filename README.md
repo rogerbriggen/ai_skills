@@ -8,14 +8,23 @@ This repository stores reusable skills (slash commands / prompt files) that exte
 
 ## Available Skills
 
-### Jira
+### Jira (REST API)
 
-Skills for interacting with Jira via the Jira Cloud REST API v3. See [`skills/jira/README.md`](skills/jira/README.md) for setup instructions.
+Skills for interacting with Jira via the Jira Cloud REST API v3. Require `JIRA_API_TOKEN` to be set. See [`skills/jira/README.md`](skills/jira/README.md) for setup instructions.
 
 | Skill | Command | Description |
 |-------|---------|-------------|
 | [jira-read](skills/jira/jira-read.md) | `/jira-read PROJECT-123` | Read a Jira issue: title, type, status, priority, assignee, description, and subtasks |
 | [jira-update-state](skills/jira/jira-update-state.md) | `/jira-update-state PROJECT-123 In Progress` | Transition a Jira issue to a new state |
+
+### Jira CLI
+
+Skills for interacting with Jira via the [`jira` CLI](https://github.com/ankitpokhrel/jira-cli) with automatic fallback to the REST API when `JIRA_API_TOKEN` is set. See [`skills/jira-cli/README.md`](skills/jira-cli/README.md) for setup instructions.
+
+| Skill | Command | Description |
+|-------|---------|-------------|
+| [jira-cli-read](skills/jira-cli/jira-cli-read.md) | `/jira-cli-read PROJECT-123` | Read a Jira issue: title, type, status, priority, assignee, description, and subtasks |
+| [jira-cli-update-state](skills/jira-cli/jira-cli-update-state.md) | `/jira-cli-update-state PROJECT-123 In Progress` | Transition a Jira issue to a new state |
 
 ### GitLab (Self-Hosted)
 
