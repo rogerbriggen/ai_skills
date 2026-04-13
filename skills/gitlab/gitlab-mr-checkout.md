@@ -8,12 +8,9 @@ Check out a GitLab merge request branch locally for review.
 
 1. Read the MR IID from `$ARGUMENTS`.
 
-2. Check whether `glab` is available:
-   ```bash
-   which glab
-   ```
-   - **If available**, use Option A (GitLab CLI — preferred).
-   - **Otherwise**, use Option B (REST API + git).
+2. Detect which tool to use based on the `GITLAB_TOKEN` environment variable:
+   - If `GITLAB_TOKEN` is **not set** → use **Option A** (GitLab CLI — no token needed, cross-platform).
+   - If `GITLAB_TOKEN` **is set** → use **Option B** (REST API + git).
 
 ---
 
