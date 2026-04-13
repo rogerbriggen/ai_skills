@@ -1,6 +1,6 @@
-# ai_skills
+# AI skills for Claude Code and Github Copilot
 
-Skills for Claude Code and GitHub Copilot.
+Skills for Claude Code and Github Copilot.
 
 ## What's in this repo
 
