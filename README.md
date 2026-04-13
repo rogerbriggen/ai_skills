@@ -1,4 +1,4 @@
-# AI skills for Claude Code and Github Copilot
+# AI skills for Claude Code and GitHub Copilot
 
 This repository stores reusable skills (slash commands / prompt files) that extend Claude Code and GitHub Copilot with helpful workflows.
 
