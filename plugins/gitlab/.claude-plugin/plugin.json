@@ -1,0 +1,10 @@
+{
+  "name": "gitlab-skills",
+  "description": "GitLab merge request skills for creating, reviewing, and annotating MRs",
+  "version": "0.1.0",
+  "author": {
+    "name": "Roger Briggen"
+  },
+  "license": "MIT",
+  "keywords": ["gitlab", "merge-request", "skills"]
+}

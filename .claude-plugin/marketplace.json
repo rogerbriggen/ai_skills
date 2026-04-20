@@ -1,0 +1,20 @@
+{
+  "name": "rogerbriggen-ai-skills",
+  "owner": {
+    "name": "Roger Briggen"
+  },
+  "plugins": [
+    {
+      "name": "jira-skills",
+      "source": "./plugins/jira",
+      "description": "Jira skills for reading issues and transitioning issue states",
+      "version": "0.1.0"
+    },
+    {
+      "name": "gitlab-skills",
+      "source": "./plugins/gitlab",
+      "description": "GitLab merge request skills for creating, reviewing, and annotating MRs",
+      "version": "0.1.0"
+    }
+  ]
+}
