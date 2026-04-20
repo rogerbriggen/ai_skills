@@ -7,7 +7,7 @@ This file provides guidance to GitHub Copilot when working with code in this rep
 This repository stores skills and configuration for Claude Code and GitHub Copilot. It is not a software project with a build system or tests — the primary artifacts are workflow/configuration files.
 Try to build skills which works for both Claude Code and GitHub Copilot, but prioritize Claude Code compatibility if there is a conflict. If there is a conflict, document it clearly in the code comments and in the README.md.
 
-Always make sure that the README.md in the root and the README.md in each skills subdirectory (e.g. `skills/jira/README.md`) contain clear setup instructions for both Claude Code and GitHub Copilot users and are always updated with the latest information about the skills.
+Always make sure that the README.md in the root and the README.md in each plugin directory (for example `plugins/jira/README.md` and `plugins/gitlab/README.md`) contain clear setup instructions for both Claude Code and GitHub Copilot users and are always updated with the latest information about the skills.
 
 ## GitHub Actions: Claude Code Integration
 

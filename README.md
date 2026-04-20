@@ -1,33 +1,108 @@
 # AI skills for Claude Code and GitHub Copilot
 
-This repository stores reusable skills (slash commands / prompt files) that extend Claude Code and GitHub Copilot with helpful workflows.
+This repository now publishes two separate plugins through the marketplace
+manifest in `.claude-plugin/marketplace.json`:
 
-## Available Skills
+- `jira-skills` from `plugins/jira`
+- `gitlab-skills` from `plugins/gitlab`
+
+Each individual skill lives in its own folder and exposes an uppercase
+`SKILL.md` file that matches the Skills Directory structure.
+
+## Marketplace Plugins
+
+| Plugin | Source | Purpose |
+| --- | --- | --- |
+| `jira-skills` | `plugins/jira` | Jira issue reading and workflow transitions |
+| `gitlab-skills` | `plugins/gitlab` | Self-hosted GitLab merge request workflows |
+
+## Repository Layout
+
+```text
+.claude-plugin/
+	marketplace.json
+plugins/
+	jira/
+		.claude-plugin/plugin.json
+		README.md
+		jira-read/SKILL.md
+		jira-update-state/SKILL.md
+	gitlab/
+		.claude-plugin/plugin.json
+		README.md
+		gitlab-mr-create/SKILL.md
+		gitlab-mr-diff/SKILL.md
+		gitlab-mr-checkout/SKILL.md
+		gitlab-mr-assign-reviewer/SKILL.md
+		gitlab-mr-line-note/SKILL.md
+		gitlab-mr-summary/SKILL.md
+```
+
+## Install as Plugins
+
+Use a plugin client that understands the `.claude-plugin/marketplace.json`
+format and install either `jira-skills` or `gitlab-skills` from this
+repository. Each plugin has its own metadata file at
+`plugins/<plugin>/.claude-plugin/plugin.json`.
+
+Use /plugin to manage marketplaces and install plugins.
+
+Copilot users: Start with /plugin marketplace add rogerbriggen/ai_skills
+
+## Install Manually
+
+### GitHub Copilot
+
+Copy the plugin folder or individual skill folders into one of these locations:
+
+- `~/.copilot/skills/` for user-wide usage
+- `.github/skills/` inside a repository for repo-specific usage
+
+For example, copying `plugins/jira/jira-read/` into `.github/skills/` makes the
+`jira-read` skill available in that repository.
+
+See also: <https://code.visualstudio.com/docs/copilot/customization/agent-skills#_create-a-skill>
+
+### Claude Code
+
+Copy the plugin folder or individual skill folders into one of these locations:
+
+- `~/.claude/skills/` for user-wide usage
+- `.claude/skills/` inside a repository for repo-specific usage
+
+See also: <https://code.claude.com/docs/en/skills#where-skills-live>
+
+## Plugin Details
 
 ### Jira
 
-Skills for interacting with Jira. Automatically uses the Jira REST API when `JIRA_API_TOKEN` is set, and falls back to the official [Atlassian CLI (`acli`)](https://developer.atlassian.com/cloud/acli/) otherwise. See [`skills/jira/README.md`](skills/jira/README.md) for setup instructions.
+The Jira plugin uses the Jira REST API when `JIRA_API_TOKEN` is set and falls
+back to the Atlassian CLI (`acli`) otherwise. Setup, examples, and
+troubleshooting live in `plugins/jira/README.md`.
 
-| Skill                                                 | Command                                           | Description                                                                     |
-| ----------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------- |
-| [jira-read](skills/jira/jira-read.md)                 | `/jira-read PROJECT-123`                          | Read a Jira issue: type, status, priority, assignee, description, and subtasks  |
-| [jira-update-state](skills/jira/jira-update-state.md) | `/jira-update-state PROJECT-123 In Progress`      | Transition a Jira issue to a new state                                          |
+| Skill | Folder | Description |
+| --- | --- | --- |
+| `jira-read` | `plugins/jira/jira-read/` | Read a Jira issue and summarize its key fields |
+| `jira-update-state` | `plugins/jira/jira-update-state/` | Transition a Jira issue to a new state |
 
-### GitLab (Self-Hosted)
+### GitLab
 
-Skills for interacting with a self-hosted GitLab instance. Automatically uses the GitLab REST API when `GITLAB_TOKEN` is set, and falls back to the [GitLab CLI (`glab`)](https://docs.gitlab.com/cli/) otherwise. See [`skills/gitlab/README.md`](skills/gitlab/README.md) for setup instructions.
+The GitLab plugin uses the GitLab REST API when `GITLAB_TOKEN` is set and falls
+back to the GitLab CLI (`glab`) otherwise. Setup, examples, and troubleshooting
+live in `plugins/gitlab/README.md`.
 
-| Skill                                                                   | Command                                                                  | Description                                                           |
-| ----------------------------------------------------------------------- | ------------------------------------------------------------------------ | --------------------------------------------------------------------- |
-| [gitlab-mr-create](skills/gitlab/gitlab-mr-create.md)                   | `/gitlab-mr-create --source feature/x --target main --title "My MR"`     | Create a new merge request                                            |
-| [gitlab-mr-diff](skills/gitlab/gitlab-mr-diff.md)                       | `/gitlab-mr-diff 42`                                                     | Show the diff of a merge request for review                           |
-| [gitlab-mr-checkout](skills/gitlab/gitlab-mr-checkout.md)               | `/gitlab-mr-checkout 42`                                                 | Check out a merge request branch locally                              |
-| [gitlab-mr-assign-reviewer](skills/gitlab/gitlab-mr-assign-reviewer.md) | `/gitlab-mr-assign-reviewer 42`                                          | Assign yourself as a reviewer on a merge request                      |
-| [gitlab-mr-line-note](skills/gitlab/gitlab-mr-line-note.md)             | `/gitlab-mr-line-note 42 src/main.go 15 "Comment"`                       | Create an inline review note on a specific line                       |
-| [gitlab-mr-summary](skills/gitlab/gitlab-mr-summary.md)                 | `/gitlab-mr-summary 42`                                                  | Generate an AI summary and post it as a general discussion note       |
+| Skill | Folder | Description |
+| --- | --- | --- |
+| `gitlab-mr-create` | `plugins/gitlab/gitlab-mr-create/` | Create a merge request |
+| `gitlab-mr-diff` | `plugins/gitlab/gitlab-mr-diff/` | Show the diff of a merge request |
+| `gitlab-mr-checkout` | `plugins/gitlab/gitlab-mr-checkout/` | Check out a merge request branch locally |
+| `gitlab-mr-assign-reviewer` | `plugins/gitlab/gitlab-mr-assign-reviewer/` | Add yourself as a reviewer on a merge request |
+| `gitlab-mr-line-note` | `plugins/gitlab/gitlab-mr-line-note/` | Create an inline review note on a specific diff line |
+| `gitlab-mr-summary` | `plugins/gitlab/gitlab-mr-summary/` | Generate and post an AI summary of a merge request |
 
 ## GitHub Actions: Claude Code Integration
 
-The workflow in [`.github/workflows/claude.yml`](.github/workflows/claude.yml) enables Claude Code to respond to `@claude` mentions in issues and pull requests.
+The workflow in `.github/workflows/claude.yml` enables Claude Code to respond to
+`@claude` mentions in issues and pull requests.
 
-See [`.github/copilot-instructions.md`](.github/copilot-instructions.md) for full details on customization.
+See `.github/copilot-instructions.md` for repository-specific guidance.
