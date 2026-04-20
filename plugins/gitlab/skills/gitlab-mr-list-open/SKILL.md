@@ -42,7 +42,7 @@ Check whether `GITLAB_TOKEN` is set.
 Run:
 
 ```bash
-glab mr list --state opened
+glab mr list -F json -o updated_at -S desc
 ```
 
 Display the command output as returned. If the command fails, show the CLI
