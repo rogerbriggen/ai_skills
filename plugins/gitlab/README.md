@@ -6,6 +6,7 @@ This plugin packages self-hosted GitLab merge request skills for Claude Code and
 
 | Skill | Folder | Purpose |
 | --- | --- | --- |
+| `gitlab-mr-list-open` | `skills/gitlab-mr-list-open/` | List all open merge requests for the current project |
 | `gitlab-mr-create` | `skills/gitlab-mr-create/` | Create a merge request from the current repository |
 | `gitlab-mr-diff` | `skills/gitlab-mr-diff/` | Show the diff for an existing merge request |
 | `gitlab-mr-checkout` | `skills/gitlab-mr-checkout/` | Check out a merge request branch locally |
@@ -22,6 +23,8 @@ plugins/gitlab/
 ├── .claude-plugin/plugin.json
 ├── README.md
 └── skills/
+    ├── gitlab-mr-list-open/
+    │   └── SKILL.md
     ├── gitlab-mr-create/
     │   └── SKILL.md
     ├── gitlab-mr-diff/
@@ -84,6 +87,7 @@ Install the whole plugin, or copy individual skill folders from `skills/` into `
 ## Usage Examples
 
 ```text
+/gitlab-mr-list-open
 /gitlab-mr-create --source feature/login --target main --title "Add login page"
 /gitlab-mr-diff 42
 /gitlab-mr-checkout 42

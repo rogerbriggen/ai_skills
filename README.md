@@ -38,6 +38,7 @@ plugins/
 		.claude-plugin/plugin.json
 		README.md
 		skills/
+			gitlab-mr-list-open/SKILL.md
 			gitlab-mr-create/SKILL.md
 			gitlab-mr-diff/SKILL.md
 			gitlab-mr-checkout/SKILL.md
@@ -101,6 +102,7 @@ live in `plugins/gitlab/README.md`.
 
 | Skill | Folder | Description |
 | --- | --- | --- |
+| `gitlab-mr-list-open` | `plugins/gitlab/skills/gitlab-mr-list-open/` | List all open merge requests for the current project |
 | `gitlab-mr-create` | `plugins/gitlab/skills/gitlab-mr-create/` | Create a merge request |
 | `gitlab-mr-diff` | `plugins/gitlab/skills/gitlab-mr-diff/` | Show the diff of a merge request |
 | `gitlab-mr-checkout` | `plugins/gitlab/skills/gitlab-mr-checkout/` | Check out a merge request branch locally |

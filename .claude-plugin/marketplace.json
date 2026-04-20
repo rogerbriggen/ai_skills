@@ -8,7 +8,7 @@
       "name": "jira-skills",
       "source": "./plugins/jira",
       "description": "Jira skills for reading issues and transitioning issue states",
-      "version": "0.2.0"
+      "version": "0.3.0"
     },
     {
       "name": "gitlab-skills",

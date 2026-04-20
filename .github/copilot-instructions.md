@@ -9,6 +9,8 @@ Try to build skills which works for both Claude Code and GitHub Copilot, but pri
 
 Always make sure that the README.md in the root and the README.md in each plugin directory (for example `plugins/jira/README.md` and `plugins/gitlab/README.md`) contain clear setup instructions for both Claude Code and GitHub Copilot users and are always updated with the latest information about the skills.
 
+Update the version numbers in the marketplace manifests at `.claude-plugin/marketplace.json` and `plugins/*/.claude-plugin/plugin.json` whenever you make changes to the skills, to ensure that users get the latest version when they install or update the plugins.
+
 ## GitHub Actions: Claude Code Integration
 
 The workflow in [.github/workflows/claude.yml](.github/workflows/claude.yml) enables Claude Code to respond to `@claude` mentions in:

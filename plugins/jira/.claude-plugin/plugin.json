@@ -1,7 +1,7 @@
 {
   "name": "jira-skills",
   "description": "Jira skills for reading issues and transitioning issue states",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": {
     "name": "Roger Briggen"
   },
