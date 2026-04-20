@@ -6,12 +6,12 @@ This plugin packages self-hosted GitLab merge request skills for Claude Code and
 
 | Skill | Folder | Purpose |
 | --- | --- | --- |
-| `gitlab-mr-create` | `gitlab-mr-create/` | Create a merge request from the current repository |
-| `gitlab-mr-diff` | `gitlab-mr-diff/` | Show the diff for an existing merge request |
-| `gitlab-mr-checkout` | `gitlab-mr-checkout/` | Check out a merge request branch locally |
-| `gitlab-mr-assign-reviewer` | `gitlab-mr-assign-reviewer/` | Add yourself as a reviewer on a merge request |
-| `gitlab-mr-line-note` | `gitlab-mr-line-note/` | Add an inline comment to a diff line |
-| `gitlab-mr-summary` | `gitlab-mr-summary/` | Generate and post an AI summary of a merge request |
+| `gitlab-mr-create` | `skills/gitlab-mr-create/` | Create a merge request from the current repository |
+| `gitlab-mr-diff` | `skills/gitlab-mr-diff/` | Show the diff for an existing merge request |
+| `gitlab-mr-checkout` | `skills/gitlab-mr-checkout/` | Check out a merge request branch locally |
+| `gitlab-mr-assign-reviewer` | `skills/gitlab-mr-assign-reviewer/` | Add yourself as a reviewer on a merge request |
+| `gitlab-mr-line-note` | `skills/gitlab-mr-line-note/` | Add an inline comment to a diff line |
+| `gitlab-mr-summary` | `skills/gitlab-mr-summary/` | Generate and post an AI summary of a merge request |
 
 ## Structure
 
@@ -21,18 +21,19 @@ Each skill lives in its own folder and exposes an uppercase `SKILL.md` file:
 plugins/gitlab/
 ├── .claude-plugin/plugin.json
 ├── README.md
-├── gitlab-mr-create/
-│   └── SKILL.md
-├── gitlab-mr-diff/
-│   └── SKILL.md
-├── gitlab-mr-checkout/
-│   └── SKILL.md
-├── gitlab-mr-assign-reviewer/
-│   └── SKILL.md
-├── gitlab-mr-line-note/
-│   └── SKILL.md
-└── gitlab-mr-summary/
-    └── SKILL.md
+└── skills/
+    ├── gitlab-mr-create/
+    │   └── SKILL.md
+    ├── gitlab-mr-diff/
+    │   └── SKILL.md
+    ├── gitlab-mr-checkout/
+    │   └── SKILL.md
+    ├── gitlab-mr-assign-reviewer/
+    │   └── SKILL.md
+    ├── gitlab-mr-line-note/
+    │   └── SKILL.md
+    └── gitlab-mr-summary/
+        └── SKILL.md
 ```
 
 ## Setup
@@ -74,11 +75,11 @@ The token should have the `api` scope. `read_api` is enough for read-only operat
 
 ### Claude Code
 
-Install the whole plugin, or copy individual skill folders into `.claude/skills/`.
+Install the whole plugin, or copy individual skill folders from `skills/` into `.claude/skills/`.
 
 ### GitHub Copilot
 
-Install the whole plugin, or copy individual skill folders into `.github/skills/` in a repository or `~/.copilot/skills/` for user-wide use.
+Install the whole plugin, or copy individual skill folders from `skills/` into `.github/skills/` in a repository or `~/.copilot/skills/` for user-wide use.
 
 ## Usage Examples
 

@@ -16,6 +16,12 @@ Each individual skill lives in its own folder and exposes an uppercase
 | `jira-skills` | `plugins/jira` | Jira issue reading and workflow transitions |
 | `gitlab-skills` | `plugins/gitlab` | Self-hosted GitLab merge request workflows |
 
+## Skills format and Agent plugins
+
+Format of a SKILL.md file, see [https://www.skillsdirectory.com/docs/skill-file-structure]
+
+Infos about agent plugins, see  [https://code.visualstudio.com/docs/copilot/customization/agent-plugins#_what-plugins-provide]
+
 ## Repository Layout
 
 ```text
@@ -25,17 +31,19 @@ plugins/
 	jira/
 		.claude-plugin/plugin.json
 		README.md
-		jira-read/SKILL.md
-		jira-update-state/SKILL.md
+		skills/
+			jira-read/SKILL.md
+			jira-update-state/SKILL.md
 	gitlab/
 		.claude-plugin/plugin.json
 		README.md
-		gitlab-mr-create/SKILL.md
-		gitlab-mr-diff/SKILL.md
-		gitlab-mr-checkout/SKILL.md
-		gitlab-mr-assign-reviewer/SKILL.md
-		gitlab-mr-line-note/SKILL.md
-		gitlab-mr-summary/SKILL.md
+		skills/
+			gitlab-mr-create/SKILL.md
+			gitlab-mr-diff/SKILL.md
+			gitlab-mr-checkout/SKILL.md
+			gitlab-mr-assign-reviewer/SKILL.md
+			gitlab-mr-line-note/SKILL.md
+			gitlab-mr-summary/SKILL.md
 ```
 
 ## Install as Plugins
@@ -58,7 +66,7 @@ Copy the plugin folder or individual skill folders into one of these locations:
 - `~/.copilot/skills/` for user-wide usage
 - `.github/skills/` inside a repository for repo-specific usage
 
-For example, copying `plugins/jira/jira-read/` into `.github/skills/` makes the
+For example, copying `plugins/jira/skills/jira-read/` into `.github/skills/` makes the
 `jira-read` skill available in that repository.
 
 See also: <https://code.visualstudio.com/docs/copilot/customization/agent-skills#_create-a-skill>
@@ -82,8 +90,8 @@ troubleshooting live in `plugins/jira/README.md`.
 
 | Skill | Folder | Description |
 | --- | --- | --- |
-| `jira-read` | `plugins/jira/jira-read/` | Read a Jira issue and summarize its key fields |
-| `jira-update-state` | `plugins/jira/jira-update-state/` | Transition a Jira issue to a new state |
+| `jira-read` | `plugins/jira/skills/jira-read/` | Read a Jira issue and summarize its key fields |
+| `jira-update-state` | `plugins/jira/skills/jira-update-state/` | Transition a Jira issue to a new state |
 
 ### GitLab
 
@@ -93,12 +101,12 @@ live in `plugins/gitlab/README.md`.
 
 | Skill | Folder | Description |
 | --- | --- | --- |
-| `gitlab-mr-create` | `plugins/gitlab/gitlab-mr-create/` | Create a merge request |
-| `gitlab-mr-diff` | `plugins/gitlab/gitlab-mr-diff/` | Show the diff of a merge request |
-| `gitlab-mr-checkout` | `plugins/gitlab/gitlab-mr-checkout/` | Check out a merge request branch locally |
-| `gitlab-mr-assign-reviewer` | `plugins/gitlab/gitlab-mr-assign-reviewer/` | Add yourself as a reviewer on a merge request |
-| `gitlab-mr-line-note` | `plugins/gitlab/gitlab-mr-line-note/` | Create an inline review note on a specific diff line |
-| `gitlab-mr-summary` | `plugins/gitlab/gitlab-mr-summary/` | Generate and post an AI summary of a merge request |
+| `gitlab-mr-create` | `plugins/gitlab/skills/gitlab-mr-create/` | Create a merge request |
+| `gitlab-mr-diff` | `plugins/gitlab/skills/gitlab-mr-diff/` | Show the diff of a merge request |
+| `gitlab-mr-checkout` | `plugins/gitlab/skills/gitlab-mr-checkout/` | Check out a merge request branch locally |
+| `gitlab-mr-assign-reviewer` | `plugins/gitlab/skills/gitlab-mr-assign-reviewer/` | Add yourself as a reviewer on a merge request |
+| `gitlab-mr-line-note` | `plugins/gitlab/skills/gitlab-mr-line-note/` | Create an inline review note on a specific diff line |
+| `gitlab-mr-summary` | `plugins/gitlab/skills/gitlab-mr-summary/` | Generate and post an AI summary of a merge request |
 
 ## GitHub Actions: Claude Code Integration
 

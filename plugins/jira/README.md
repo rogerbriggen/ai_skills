@@ -6,8 +6,8 @@ This plugin packages Jira-focused skills for Claude Code and GitHub Copilot.
 
 | Skill | Folder | Purpose |
 | --- | --- | --- |
-| `jira-read` | `jira-read/` | Read a Jira issue and summarize the important fields |
-| `jira-update-state` | `jira-update-state/` | Transition a Jira issue to a new workflow state |
+| `jira-read` | `skills/jira-read/` | Read a Jira issue and summarize the important fields |
+| `jira-update-state` | `skills/jira-update-state/` | Transition a Jira issue to a new workflow state |
 
 ## Structure
 
@@ -17,10 +17,11 @@ Each skill lives in its own folder and exposes an uppercase `SKILL.md` file:
 plugins/jira/
 ├── .claude-plugin/plugin.json
 ├── README.md
-├── jira-read/
-│   └── SKILL.md
-└── jira-update-state/
-    └── SKILL.md
+└── skills/
+    ├── jira-read/
+    │   └── SKILL.md
+    └── jira-update-state/
+        └── SKILL.md
 ```
 
 ## Setup
@@ -57,11 +58,11 @@ acli configure
 
 ### Claude Code
 
-Install the whole plugin, or copy individual skill folders into `.claude/skills/` in your project or home directory.
+Install the whole plugin, or copy individual skill folders from `skills/` into `.claude/skills/` in your project or home directory.
 
 ### GitHub Copilot
 
-Install the whole plugin, or copy individual skill folders into `.github/skills/` in your repository or `~/.copilot/skills/` for user-wide usage.
+Install the whole plugin, or copy individual skill folders from `skills/` into `.github/skills/` in your repository or `~/.copilot/skills/` for user-wide usage.
 
 ## Usage Examples
 
